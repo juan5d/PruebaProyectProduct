@@ -13,7 +13,7 @@ export interface Producto {
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:8081/productos';
+  private apiUrl = '/api/productos';
 
   constructor(private http: HttpClient) {}
 
@@ -23,5 +23,13 @@ export class ProductoService {
 
   crearProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.apiUrl, producto);
+  }
+
+  updateProducto(id: number, producto: Producto): Observable<Producto> {
+    return this.http.put<Producto>(`${this.apiUrl}/${id}`, producto);
+  }
+  
+  eliminarProducto(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

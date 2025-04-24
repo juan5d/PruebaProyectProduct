@@ -1,1 +1,7 @@
-<p>producto-formulario works!</p>
+<h3>{{ producto.id ? 'Editar Producto' : 'Crear Producto' }}</h3>
+<form (ngSubmit)="submit()" [formGroup]="formulario">
+  <input type="text" formControlName="nombre" placeholder="Nombre" />
+  <input type="number" formControlName="precio" placeholder="Precio" />
+  <input type="text" formControlName="descripcion" placeholder="Descripción" />
+  <button type="submit">{{ producto.id ? 'Actualizar' : 'Crear' }}</button>
+</form>
