@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: productos
+          uri: http://api-productos:8080
+          predicates:
+            - Path=/productos/**
